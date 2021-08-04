@@ -1,8 +1,8 @@
 import React from "react";
-import "./SideBar.css"
+import classes from "./SideBar.module.css"
 const SideBar = () => {
     return (
-        <div className={"sideBar"}>
+        <div className={classes.sideBar}>
         </div>
     );
 }

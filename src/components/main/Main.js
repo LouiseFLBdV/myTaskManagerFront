@@ -1,9 +1,9 @@
 import React from "react";
-import "./Main.css";
+import classes from "./Main.module.css";
 
 const Main = () => {
     return(
-        <main className={'main'}>
+        <main className={classes.main}>
             <div className="content">
 
             </div>
