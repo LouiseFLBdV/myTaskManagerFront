@@ -1,0 +1,15 @@
+.main{
+}
+
+.main {
+    background-color: rgb(222, 222, 222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    background-color: white;
+    width: 97%;
+    height: 95%;
+}
