@@ -1,9 +1,11 @@
 import React from "react";
 import classes from "./SideBarItem.module.css"
-const SideBarItem = () =>{
+const SideBarItem = (props) =>{
     return(
         <div className={classes.item}>
-            asdsdasd
+            <div className={classes.itemText}>
+                {props.name}
+            </div>
         </div>
     )
 }

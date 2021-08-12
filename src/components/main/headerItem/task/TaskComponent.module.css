@@ -1,0 +1,44 @@
+.task{
+    display: flex;
+}
+
+.task{
+    border: 1px solid;
+    height: 40px;
+}
+.taskHeader{
+    background-color: gray;
+}
+
+.taskField{
+    flex-basis: 50%;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.taskFieldId{
+    width: 50px;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.taskFieldCommand{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid black;
+}
+
+.taskFieldCommand img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+}
