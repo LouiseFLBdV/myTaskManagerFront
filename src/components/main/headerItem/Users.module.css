@@ -1,0 +1,99 @@
+
+
+.user{
+    display: flex;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.user{
+    border: 1px solid;
+    height: 40px;
+}
+
+.userHeader{
+    background-color: gray;
+}
+
+.active{
+    background-color: rgb(152,168,168);
+}
+
+.field{
+    flex-basis: 40%;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fieldId{
+    flex-basis: initial;
+    width: 50px;
+}
+
+.fieldTask{
+    cursor: pointer;
+}
+.fieldCommand{
+    flex-basis: initial;
+    width: 100px;
+}
+
+.fieldCommand img{
+    height: 20px;
+    width: 20px;
+
+}
+
+.fieldCommand img:hover{
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.taskContent{
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.temp{
+    width: 90%;
+    box-shadow: 10px 10px 12px rgba(35,59, 59, 0.8);
+}
+
+.addUserRow {
+    background: beige;
+}
+
+input{
+    width: 35%;
+}
+
+.updateInput{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+
+}
+
+.updateInput input{
+    justify-self: center;
+    width: 39%;
+    margin-left: 12%;
+}
+
+.updateInput img{
+    width: 20px;
+    justify-self: end;
+    margin-right: 20px;
+}
+
+.updateInput img:hover{
+    opacity: 0.3;
+}

@@ -1,16 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./Main.module.css";
-import MainItem from "./headerItem/MainItem";
+import Users from "./headerItem/Users";
 
 
 const Main = (props) => {
-    let mainItems = props.users.map(user =>{
-        return <MainItem id={user.id} userName={user.userName} firstName={user.firstName} lastName={user.lastName} tasks={user.tasks} command={props.addUser}/>
+    let mainItems = props.state.users.map(user =>{
+        return <Users id={user.id} userName={user.userName} firstName={user.firstName} lastName={user.lastName} tasks={user.tasks}/>
     })
     return (
         <main className={style.main}>
             <div className={style.content}>
-                <MainItem id="#" userName="userName" firstName="firstName" lastName="lastName" tasks="tasks" command="addUser" header="yes"/>
+                <Users id="id" userName="userName" firstName="firstName" lastName="lastName" tasks="tasks" header="yes" addUser={props.addUser}/>
                 {mainItems}
             </div>
         </main>

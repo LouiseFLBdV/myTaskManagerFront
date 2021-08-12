@@ -9,7 +9,7 @@ function App(props) {
     <div className="App">
       <Header/>
       <SideBar/>
-        <Main users={props.state.users} addUser={props.addUser}/>
+        <Main state={props.state} addUser={props.addUser}/>
       <Footer/>
     </div>
   );

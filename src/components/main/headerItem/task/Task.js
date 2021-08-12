@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./TaskComponent.module.css";
-import addItem from "../../../../img/addItem.png";
+import style from "./Task.module.css";
+import addItem from "../../../../img/add.png";
 import deleteItem from "../../../../img/delete.png";
 
 const Task = (props) =>{

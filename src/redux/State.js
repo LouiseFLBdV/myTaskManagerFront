@@ -1,9 +1,11 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     users : [
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
+        {id: "1", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
             tasks: [
                 {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
+                    id: "1", taskTitle: "task1", taskDescription: "task1"
                 },
                 {
                     id: "#", taskTitle: "task1", taskDescription: "task1"
@@ -25,7 +27,7 @@ let state = {
                 },
             ]
         },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
+        {id: "2", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
             tasks: [
                 {
                     id: "#", taskTitle: "task1", taskDescription: "task1"
@@ -44,134 +46,11 @@ let state = {
                 },
             ]
         },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
+        {id: "3", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
             tasks: [
                 {
                     id: "#", taskTitle: "task1", taskDescription: "task1"
                 },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-                {
-                    id: "#", taskTitle: "task1", taskDescription: "task1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3ыыыыы", firstName: "firstNaыыыыыыыme3", lastName: "lastыыыName3",
-            tasks: [
-                {
-                    id: "#", taskTitle: "taыыыыыsk1", taskDescription: "taыыыыsk1"
-                },
-                {
-                    id: "#", taskTitle: "taskыыы1", taskDescription: "taskыыы1"
-                },
-            ]
-        },
-        {id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-            tasks: [
                 {
                     id: "#", taskTitle: "task1", taskDescription: "task1"
                 },
@@ -187,21 +66,22 @@ let state = {
 }
 
 export let addUser = (user) =>{
-    user = {
-        id: "#", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
-        tasks: [
-            {
-                id: "#", taskTitle: "task1", taskDescription: "task1"
-            },
-            {
-                id: "#", taskTitle: "task2", taskDescription: "task2"
-            },
-            {
-                id: "#", taskTitle: "task3", taskDescription: "task3"
-            },
-        ]
-    };
+    // user = {
+    //     id: "4", userName: "userName3", firstName: "firstName3", lastName: "lastName3",
+    //     tasks: [
+    //         {
+    //             id: "1", taskTitle: "task1", taskDescription: "task1"
+    //         },
+    //         {
+    //             id: "2", taskTitle: "task1", taskDescription: "task1"
+    //         },
+    //         {
+    //             id: "3", taskTitle: "task1", taskDescription: "task1"
+    //         },
+    //     ]
+    // }
     state.users.push(user);
+    alert("add user")
+    renderEntireTree(state, addUser);
 }
-
 export default state;

@@ -3,11 +3,14 @@
 }
 
 .task{
-    border: 1px solid;
+    border: 1px solid darkslategray;
     height: 40px;
+    font-weight: bold;
+    color: darkslategray;
 }
 .taskHeader{
-    background-color: gray;
+    background-color: darkslategray;
+    color: white;
 }
 
 .taskField{

@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import State from './redux/State'
+import state from './redux/State'
 import {addUser} from './redux/State'
+import {renderEntireTree} from "./render";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App state={State} addUser={addUser}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App state={State} addUser={addUser}/>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+renderEntireTree(state, addUser)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
