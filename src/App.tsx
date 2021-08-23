@@ -4,12 +4,12 @@ import SideBar from "./components/sidebar/SideBar";
 import Footer from './components/footer/Footer';
 import Main from "./components/main/Main";
 
-function App(props) {
+function App(props: any) {
   return (
     <div className="App">
       <Header/>
       <SideBar/>
-        <Main state={props.state} addUser={props.addUser}/>
+        <Main store={props.store}/>
       <Footer/>
     </div>
   );

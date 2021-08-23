@@ -1,5 +1,10 @@
 .task{
     display: flex;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 
 .task{
@@ -8,40 +13,68 @@
     font-weight: bold;
     color: darkslategray;
 }
-.taskHeader{
-    background-color: darkslategray;
-    color: white;
-}
 
-.taskField{
+.field{
     flex-basis: 50%;
     border-right: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.taskFieldId{
+.taskHeader{
+    background-color: darkslategray;
+    color: white;
+}
+
+.fieldId{
+    flex-basis: initial;
     width: 50px;
-    border-right: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
 }
-.taskFieldCommand{
+
+.fieldCommand{
+    flex-basis: initial;
     width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 1px solid black;
 }
 
-.taskFieldCommand img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fieldCommand img{
     height: 20px;
     width: 20px;
+
+}
+
+.fieldCommand img:hover{
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.addTaskRow {
+    background: beige;
+}
+
+input{
+    width: 35%;
+}
+
+.updateInput{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+
+}
+
+.updateInput input{
+    justify-self: center;
+    width: 39%;
+    margin-left: 12%;
+}
+
+.updateInput img{
+    width: 20px;
+    justify-self: end;
+    margin-right: 20px;
+}
+
+.updateInput img:hover{
+    opacity: 0.3;
 }

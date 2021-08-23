@@ -1,5 +1,3 @@
-
-
 .user{
     display: flex;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -14,21 +12,20 @@
     height: 40px;
 }
 
-.userHeader{
-    background-color: gray;
-}
-
-.active{
-    background-color: rgb(152,168,168);
-}
-
 .field{
     flex-basis: 40%;
     border-right: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.userHeader{
+    background-color: gray;
+}
+
+.active{
+    background-color: rgb(152,168,168);
 }
 
 .fieldId{
