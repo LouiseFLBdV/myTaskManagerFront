@@ -9,7 +9,7 @@ function App(props: any) {
     <div className="App">
       <Header/>
       <SideBar/>
-        <Main store={props.store}/>
+        <Main state={props.state} dispatch={props.dispatch}/>
       <Footer/>
     </div>
   );

@@ -5,9 +5,9 @@ export class User{
     private _userName: string;
     private _firstName: string;
     private _lastName: string;
-    private _tasks: Task;
+    private _tasks: Task[];
 
-    constructor(id:number, userName: string, firstName: string, lastName: string, tasks: Task) {
+    constructor(id:number, userName: string, firstName: string, lastName: string, tasks: Task[]) {
         this._id = id;
         this._userName = userName;
         this._firstName = firstName;
@@ -39,11 +39,11 @@ export class User{
         this._lastName = value;
     }
 
-    get tasks(): Task {
+    get tasks(): Task[] {
         return this._tasks;
     }
 
-    set tasks(value: Task) {
+    set tasks(value: Task[]) {
         this._tasks = value;
     }
 
