@@ -1,14 +1,8 @@
 import React, {createRef, useState} from "react"
 import style from "./UserComponent.module.css";
 import TaskComponent from "./task/Task";
-import addUserIcon from "../../../img/add.png";
 import deleteUserIcon from "../../../img/delete.png";
 import acceptUserIcon from "../../../img/accept.png"
-import axios from "axios";
-import {User} from "../../../redux/User";
-
-const UPDATE_NEW_USER = 'UPDATE-NEW-USER';
-const updateNewUserActionCreator = (user:User) => ( {type: UPDATE_NEW_USER, newUser: user})
 
 const UserComponent = (props:any) => {
 
@@ -32,9 +26,6 @@ const UserComponent = (props:any) => {
     let refInputFirstName :any = createRef();
     let refInputLastName:any  = createRef();
 
-    //add User state
-    const [addUser, setAddUser]:any  = useState();
-
     let selectUser = () => {
         if (isUserSelected) {
             setTasks(<div></div>)
@@ -48,6 +39,28 @@ const UserComponent = (props:any) => {
             setStyleTaskContent(style.taskContent);
             tasksRender();
         }
+    }
+
+    let deleteUserCommand = () => {
+        props.deleteUser(props.user.id)
+    }
+
+    let updateUserName = () =>{
+        props.updateUserName(props.user, refInputUserName.current.value)
+        setUpdateLastName(false)
+        setUserNameField(refInputUserName.current.value)
+    }
+
+    let updateFirstName = () => {
+        props.updateFirstName(props.user, refInputFirstName.current.value)
+        setUpdateLastName(false)
+        setFirstNameField(refInputFirstName.current.value)
+    }
+
+    let updateLastName = () =>{
+        props.updateLastName(props.user, refInputLastName.current.value)
+        setUpdateLastName(false)
+        setLastNameField(refInputLastName.current.value)
     }
 
     let updateUserNameTemplate = () => {
@@ -65,24 +78,10 @@ const UserComponent = (props:any) => {
         }
     }
 
-    let updateUserName = () =>{
-        let upUserName = refInputUserName.current.value;
-        let user = {
-            id: props.user.id,
-            firstName: props.user.firstName,
-            lastName: props.user.lastName,
-            userName: upUserName,
-            tasks: props.user.tasks
-        }
-        axios.put("http://localhost:8080/api/users", user);
-        setUpdateUserName(false)
-        setUserNameField(upUserName)
-    }
-
     let updateFirstNameTemplate = () => {
         if (isUpdateFirstName) {
             setUpdateFirstName(false)
-            // setFirstNameField(props.user.firstName)
+            setFirstNameField(props.user.firstName)
         } else {
             setUpdateFirstName(true)
             setFirstNameField(
@@ -92,19 +91,6 @@ const UserComponent = (props:any) => {
                 </div>
             )
         }
-    }
-    let updateFirstName = () => {
-        let upFirstName = refInputFirstName.current.value;
-        let user = {
-            id: props.user.id,
-            firstName: upFirstName,
-            lastName: props.user.lastName,
-            userName: props.user.userName,
-            tasks: props.user.tasks
-        }
-        axios.put("http://localhost:8080/api/users", user);
-        setUpdateFirstName(false)
-        setFirstNameField(upFirstName)
     }
 
     let updateLastNameTemplate = () => {
@@ -122,94 +108,12 @@ const UserComponent = (props:any) => {
         }
     }
 
-    let updateLastName = () =>{
-        let upLastName = refInputLastName.current.value;
-        let user = {
-            id: props.user.id,
-            firstName: props.user.firstName,
-            lastName: upLastName,
-            userName: props.user.userName,
-            tasks: props.user.tasks
-        }
-        axios.put("http://localhost:8080/api/users", user);
-        setUpdateLastName(false)
-        setLastNameField(upLastName)
-    }
-
-    let deleteUser = () => {
-        let user = {
-            id: props.user.id,
-            firstName: props.user.firstName,
-            lastName: props.user.lastName,
-            userName: props.user.userName,
-            tasks: props.user.tasks
-        }
-        axios.delete("http://localhost:8080/api/users/" + props.user.id);
-    }
-
     let tasksRender = () => {
         let taskComponent = props.user.tasks.map((task:any)  => {
-            return <TaskComponent taskId={task.taskId} taskTitle={task.taskTitle} taskDesc={task.taskDescription}/>
+            return <TaskComponent userName={props.user.userName} user={props.user} id={task.id} title={task.title} desc={task.description}/>
         })
-        setTaskHeader(<TaskComponent taskId={"id"} taskTitle={"taskTitle"} taskDesc={"taskDesc"} taskHeader={"yes"}/>);
+        setTaskHeader(<TaskComponent taskId={"id"} taskTitle={"taskTitle"} taskDesc={"taskDesc"} taskHeader={"yes"} userName={props.user.userName} user={props.user}/>);
         setTasks(taskComponent);
-    }
-
-    let addUserTemplateChangeUserName = () =>{
-        let user:User = props.newUser;
-        user.userName = refInputUserName.current.value;
-        props.dispatch(updateNewUserActionCreator(user));
-    }
-
-    let addUserTemplate = () => {
-        if (addUser === "") {
-            setAddUser(
-                <div>
-                    <form className={style.user + " " + style.addUserRow} action={"#"} method="post">
-                        <div className={style.field + " " + style.fieldId}>#</div>
-                        <div className={style.field}><input type="text" ref={refInputUserName} onChange={addUserTemplateChangeUserName} value={props.newUser.userName}/></div>
-                        <div className={style.field}><input type="text" ref={refInputFirstName}/></div>
-                        <div className={style.field}><input type="text" ref={refInputLastName}/></div>
-                        <div className={style.field + " " + style.fieldTask}>#</div>
-                        <div className={style.field + " " + style.fieldCommand}><img src={acceptUserIcon} alt="accept" onClick={addUserCommand}/>
-                        </div>
-                    </form>
-                </div>
-            )
-        } else {
-            setAddUser("");
-        }
-    }
-    //todo отдельно
-    //todo typescript
-    let addUserCommand = () => {
-
-        let user = {
-            id: "", userName: refInputUserName.current.value, firstName: refInputFirstName.current.value, lastName: refInputLastName.current.value, tasks: []
-        }
-        axios.post("http://localhost:8080/api/users", user);
-        props.addUser(user);
-        setAddUser("");
-    }
-
-    if (props.header === "yes") {
-        let tempVar;
-        tempVar = style.user + " " + style.userHeader;
-        return (
-            <div>
-                <div className={tempVar}>
-                    <div className={style.field + " " + style.fieldId}>id</div>
-                    <div className={style.field}>User Name</div>
-                    <div className={style.field}>First Name</div>
-                    <div className={style.field}>Last Name</div>
-                    <div className={style.field}>Tasks</div>
-                    <div className={style.field + " " + style.fieldCommand}><img src={addUserIcon} alt={"add"} onClick={addUserTemplate}/></div>
-                </div>
-                <div>
-                    {addUser}
-                </div>
-            </div>
-        )
     }
 
     return (
@@ -219,9 +123,10 @@ const UserComponent = (props:any) => {
                 <div className={style.field} onDoubleClick={updateUserNameTemplate}>{userNameField}</div>
                 <div className={style.field} onDoubleClick={updateFirstNameTemplate}>{firstNameField}</div>
                 <div className={style.field} onDoubleClick={updateLastNameTemplate}>{lastNameField}</div>
+
                 <div className={style.field + " " + style.fieldTask}
                      onDoubleClick={selectUser}>{props.user.tasks.length}</div>
-                <div className={style.field + " " + style.fieldCommand}><img src={deleteUserIcon} alt="del" onClick={deleteUser}/></div>
+                <div className={style.field + " " + style.fieldCommand}><img src={deleteUserIcon} alt="del" onClick={deleteUserCommand}/></div>
             </div>
             <div className={styleTaskContent}>
                 <div className={style.temp}>{taskHeader}{tasks}</div>

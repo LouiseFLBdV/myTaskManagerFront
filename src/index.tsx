@@ -13,7 +13,12 @@ export let renderEntireTree = (state:any) => {
         document.getElementById('root')
     );
 }
-renderEntireTree(store.getState())
+export let baseRender = () =>{
+    renderEntireTree(store.getState())
+}
+
+baseRender();
+
 store.subscribe(()=>{
     renderEntireTree(store.getState())
 })

@@ -32,14 +32,19 @@ const Task = (props) => {
     }
 
     let addTaskCommand = () => {
-
+        console.log(props.user)
         let task = {
-            id: "", taskTitle: refInputTaskTitle.current.value, taskDesc: refInputTaskDesc.current.value, tasks: []
+            // id: "", title: refInputTaskTitle.current.value, description: refInputTaskDesc.current.value, user:{id: props.user.id, userName:props.userName, firstName:props.user.firstName, lastName:props.user.lastName}
+            id: "", title: refInputTaskTitle.current.value, description: refInputTaskDesc.current.value, users:[{id:props.id, userName:props.userName,firstName:props.firstName,lastName:props.lastName}]
         }
+        console.log(task)
         axios.post("http://localhost:8080/api/tasks", task);
         setAddTask("");
     }
 
+    let deleteTask=()=>{
+        axios.delete("http://localhost:8080/api/tasks/" + props.id);
+    }
 
     if (props.taskHeader === "yes") {
         let tempVar;
@@ -64,10 +69,10 @@ const Task = (props) => {
     return (
         <div>
             <div className={style.task}>
-                <div className={style.field + " " + style.fieldId}>{props.taskId}</div>
-                <div className={style.field}>{props.taskTitle}</div>
-                <div className={style.field}>{props.taskDesc}</div>
-                <div className={style.field + " " + style.fieldCommand}><img src={deleteItem} alt="del"/></div>
+                <div className={style.field + " " + style.fieldId}>{props.id}</div>
+                <div className={style.field}>{props.title}</div>
+                <div className={style.field}>{props.desc}</div>
+                <div className={style.field + " " + style.fieldCommand}><img src={deleteItem} alt="del" onClick={deleteTask}/></div>
             </div>
             <div>
 
